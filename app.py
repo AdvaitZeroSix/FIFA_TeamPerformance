@@ -137,17 +137,6 @@ with tab1:
             "Probability": probabilities
         })
 
-        st.subheader("Prediction Confidence")
-
-        st.bar_chart(
-            probability_df.set_index("Performance Tier")
-        )
-
-        st.metric(
-            "Model Confidence",
-            f"{confidence:.2f}%"
-        )
-
 with tab2:
 
     st.header("Exploratory Data Analysis")
