@@ -179,7 +179,7 @@ with tab2:
     with col4:
         st.subheader("Attack Rating")
         st.image(
-            "images/AttackRatings.png",
+            "images/attackRatings.png",
             use_container_width=True
         )
 
