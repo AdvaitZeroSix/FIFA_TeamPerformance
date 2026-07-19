@@ -164,7 +164,7 @@ with tab2:
     with col2:
         st.subheader("Performance Tier Distribution")
         st.image(
-            "images/performanceTier.png",
+            "images/PerformanceTier.png",
             use_container_width=True
         )
 
