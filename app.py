@@ -7,8 +7,20 @@ st.set_page_config(
     layout="wide"
 )
 
-model = joblib.load("model.pkl")
-teams_df = pd.read_csv("data/male_teams.csv")
+
+# Load the model and data once, not on every Streamlit rerun
+@st.cache_resource
+def load_model():
+    return joblib.load("model.pkl")
+
+
+@st.cache_data
+def load_teams():
+    return pd.read_csv("data/male_teams.csv")
+
+
+model = load_model()
+teams_df = load_teams()
 
 teams_df = teams_df[
     [
@@ -330,6 +342,13 @@ with tab4:
         label="Best Model",
         value="Random Forest",
         delta="99.2% Accuracy"
+    )
+
+    st.caption(
+        "Note: the performance tier is defined by cutting the team's overall "
+        "rating into bands (Weak, Average, Good, Elite). Attack, midfield and "
+        "defence feed into that rating, so this accuracy shows how well the "
+        "model recovers the rating bands, not how well it forecasts results."
     )
 
     st.subheader("Project Workflow")
